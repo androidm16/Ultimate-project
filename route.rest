@@ -1,0 +1,17 @@
+GET http://localhost:3040/users
+
+###
+
+GET http://localhost:3040/users/12
+
+###
+
+POST http://localhost:3040/users
+Content-Type: application/json
+
+{
+    "name": "Bongani",
+    "email": "bongani@gmail.com",
+    "contact": "0783013978",
+    "password": "om199211"
+}

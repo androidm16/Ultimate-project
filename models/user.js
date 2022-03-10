@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { stringify } = require('nodemon/lib/utils')
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -13,6 +14,27 @@ const userSchema = new mongoose.Schema({
     contact: {
         type: String,
         required: true,
-    }
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    avatar: {
+        type: String,
+        required: false,
+        default: null,
+    },
+    about: {
+        type: String,
+        required: false,
+        default: null,
+      },
+      joinDate: {
+        type: Date,
+        required: true,
+        default: Date.now,
+      },
 
-})
+});
+
+module.exports = mongoose.model('users', userSchema)
