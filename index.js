@@ -19,7 +19,6 @@ app.use('/users', userRouter)
 
 app.use(express.json());
 
-app.set('port', process.env.port || 3040) 
 
 // User Route
 app.get('/', (req, res, next) =>{
@@ -27,6 +26,7 @@ app.get('/', (req, res, next) =>{
 });
 
 
-app.listen(app.get('port'), (server) =>{
-    console.info(`Server listen on port ${app.get('port')}`);
-})
+app.set("port", process.env.PORT || 6969);
+app.listen(app.get("port"), (server) => {
+  console.info(`Server listen on port ${app.get("port")}`);
+});
