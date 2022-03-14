@@ -1,11 +1,16 @@
+require('dotenv/config');
+
 const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-require('dotenv/config');
 
 app.use(bodyParser.json());
+// Connect to DB
+mongoose.connect(process.env.DB_CONNECTION, { userNewUrlParser: true }, () => 
+    console.log('connected to DB!')
+);
 
 //Import Routes
 const userRouter = require('./routes/users');
@@ -21,38 +26,7 @@ app.get('/', (req, res, next) =>{
     res.send('<h1>Thina ba shiyekayo..</h1>');
 });
 
-// app.get('/:id', (req, res, next) =>{
-//     res.send('');
-// });
 
-// app.post('/:id', (req, res, next) =>{
-//     res.send('');
-// });
-
-// app.put('/:id', (req, res, next) =>{
-//     res.send('');
-// });
-
-// app.patch('/:id', (req, res, next) => {
-//     res.send('');
-// });
-
-// app.delete('/:id', (req, res, next) =>{
-//     res.send('');
-// });
-
-// Product Route
-
-//Sign up 
-
-// Register email
-
-
-// Connect to DB
-mongoose.connect(process.env.DB_CONNECTION, { userNewUrlParser: true }, () => 
-    console.log('connected to DB!')
-);
-
-app.listen(app.get('port'), server =>{
+app.listen(app.get('port'), (server) =>{
     console.info(`Server listen on port ${app.get('port')}`);
 })
