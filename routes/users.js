@@ -1,6 +1,8 @@
+require('dotenv/config');
+
 const express = require('express');
 const router = express.Router();
-const user = require('../models/user');
+const User = require('../models/user'); 
 
 // User Route
 router.get('/', async (req, res, next) =>{
@@ -16,17 +18,17 @@ router.get('/:id', async (req, res, next) =>{
     res.send(req.params.id);
 });
 
-router.post('/', async (req, res, next) =>{
+router.post('/', async (req, res, next) => {
     const { name, email, password, contact } = req.body;
     
-    const User = new user({
+    const user = new User({
         name,
         email,
         contact,
         password,
     })
     try{
-        const newUser = await User.save()
+        const newUser = await user.save()
         res.status(201).json(newUser)
     } catch (err) {
         res.status(400).json({ message: err.message })

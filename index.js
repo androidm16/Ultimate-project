@@ -4,20 +4,35 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
+const User = require("./models/user");
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 // Connect to DB
-mongoose.connect(process.env.DB_CONNECTION, { userNewUrlParser: true }, () => 
-    console.log('connected to DB!')
-);
+// const DB_CONNECTION = async () => {
+//   try {
+//     await mongoose.connect(`mongodb://${6969}/${DB_CONNECTION}`, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//       // useFindAndModify: false,
+//       // useCreateIndex: true,
+//     });
+//     console.log('MongoDB Connected!');
+//   } catch (err) {
+//     console.log('Failed to connect to MongoDB', err)
+//   }
+// ;}
 
+// DB_CONNECTION()
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Connected to Database"));
+    
+    app.use(express.json());
 //Import Routes
 const userRouter = require('./routes/users');
 app.use('/users', userRouter)
-
-
-app.use(express.json());
 
 
 // User Route
