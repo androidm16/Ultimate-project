@@ -33,7 +33,8 @@ db.once("open", () => console.log("Connected to Database"));
 //Import Routes
 const userRouter = require('./routes/users');
 app.use('/users', userRouter)
-
+const productsRouter = require('./routes/products')
+app.use('/products', productsRouter)
 
 // User Route
 app.get('/', (req, res, next) =>{

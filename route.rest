@@ -10,8 +10,8 @@ POST http://localhost:6969/users
 Content-Type: application/json
 
 {
-    "name": "Bongani",
-    "email": "bongani@gmail.com",
-    "contact": "0783013978",
-    "password": "om199211"
+    "name": "Bongani2",
+    "email": "bongani2@gmail.com",
+    "contact": "0783013973",
+    "password": "om199212"
 }
