@@ -1,5 +1,6 @@
 require('dotenv/config');
 
+const cors = require("cors");
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -28,7 +29,7 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
-    
+app.use(cors());
     app.use(express.json());
 //Import Routes
 const userRouter = require('./routes/users');
