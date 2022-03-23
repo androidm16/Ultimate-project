@@ -1,7 +1,7 @@
 require("dotenv").config;
 
 const express = require("express");
-const Post = require("../models/product");
+const Product = require("../models/product");
 const auth = require("../middleware/auth");
 const { getUser, getProduct } = require("../middleware/finders");
 
@@ -11,7 +11,7 @@ const router = express.Router();
 // GET all products
 router.get("/", async (req, res) => {
   try {
-    const products = await product.find();
+    const products = await Product.find();
     res.status(201).send(products);
   } catch (error) {
     res.status(500).send({ message: error.message });
