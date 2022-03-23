@@ -9,7 +9,7 @@ const { getUser, getProduct } = require("../middleware/finders");
 const router = express.Router();
 
 // GET all products
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const products = await product.find();
     res.status(201).send(products);
@@ -24,26 +24,26 @@ router.get("/:id", [auth, getProduct], (req, res, next) => {
 });
 
 // CREATE a product
-router.post("/", auth, async (req, res, next) => {
+router.post("/", async (req, res, next) => {
 
-  const { title, category,description, img, price } = req.body;
+  const { name, category,description, img, price } = req.body;
 
   let product;
 
   img
     ? (product = new Post({
-        title,
+        name,
         category,
         description,
-        created_by: req.user._id,
+        // created_by: req.user.isAdmin,
         img,
         price
       }))
     : (product = new Post({
-      title,
+      name,
       category,
       description,
-      created_by: req.user._id,
+      // created_by: req.user.isAdmin,
       img,
       price
       }));

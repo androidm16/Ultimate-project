@@ -54,7 +54,7 @@ router.patch("/login", async (req, res, next) => {
 });
 
 // REGISTER a user
-router.post("/", async (req, res, next) => {
+router.post("/", auth,  async (req, res, next) => {
   const { name, email, password, contact } = req.body;
 
   const salt = await bcrypt.genSalt();
