@@ -55,6 +55,7 @@ router.patch("/login", async (req, res, next) => {
 
 // REGISTER a user
 router.post("/signup",  async (req, res, next) => {
+  console.log("Register route reached");
   const { name, email, password, contact } = req.body;
 
   const salt = await bcrypt.genSalt();
@@ -69,7 +70,7 @@ router.post("/signup",  async (req, res, next) => {
 
   try {
     const newUser = await user.save();
-
+    
     try {
       const access_token = jwt.sign(
         JSON.stringify(newUser),
