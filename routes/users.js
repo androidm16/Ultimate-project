@@ -69,9 +69,9 @@ router.post("/signup",  async (req, res, next) => {
   });
 
   try {
-    console.log(user)
+    console.log("created user: ", user)
     const newUser = await user.save();
-    console.log(newUser)
+    console.log("new user saved: ", newUser)
     try {
       const access_token = jwt.sign(
         JSON.stringify(newUser),
