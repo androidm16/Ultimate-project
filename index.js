@@ -39,7 +39,7 @@ app.use('/products', productsRouter)
 
 // User Route
 app.get('/', (req, res, next) =>{
-    res.send('<h1>Thina ba shiyekayo..</h1>');
+    res.send('<h1>Hey there Lectures, take a look at my project and bare with me. Alright, thank you in advance..</h1>');
 });
 
 
