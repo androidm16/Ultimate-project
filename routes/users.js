@@ -69,8 +69,9 @@ router.post("/signup",  async (req, res, next) => {
   });
 
   try {
+    console.log(user)
     const newUser = await user.save();
-    
+    console.log(newUser)
     try {
       const access_token = jwt.sign(
         JSON.stringify(newUser),
