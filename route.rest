@@ -6,12 +6,12 @@ GET http://localhost:6969/users/12
 
 ###
 
-POST http://localhost:6969/users
+POST https://my-fullstack-pject1.herokuapp.com/users/signup
 Content-Type: application/json
 
 {
-    "name": "Bongani2",
-    "email": "bongani2@gmail.com",
-    "contact": "0783013973",
-    "password": "om199212"
+    "name": "jason",
+    "email": "jason@gmail.com",
+    "contact": "1234567890",
+    "password": "password"
 }
